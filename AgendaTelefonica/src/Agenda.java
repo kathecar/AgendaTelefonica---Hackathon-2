@@ -39,19 +39,23 @@ public class Agenda{
     }
 
     public void anadirContacto(String nombre, String apellido, String telefono){
+
+        // Primero revisamos si la agenda esta llena o vacía para poder agregar
         if (agendaLlena()){
             System.out.println(" ⚠ Lo sentimos la Agenda esta llena, por lo tanto no puedes añadir ❌ ");
         } else {
+            // si no etsa llena, revisamos que la informacion que nos den sea valida, y no venga vacia
             if ( nombre.isEmpty() || apellido.isEmpty() || telefono.isEmpty()){
                 System.out.println("❌ El nombre, apellido y telefono son obligatorios");
             } else {
-
+                //Si el nuemro viene okay se revisa que cumpla con los requisitos numero y 10 caracteres
                 //regex es de 0 a 9 los digitos que usa            }
                 if( telefono.length() != 10 ||  !telefono.matches("[0-9]+")) {
                     System.out.println("🛑 El número de teléfono debe tener exactamente 10 caracteres.");
                     return;
                 }
-                // Aqui instancio el objeto contacto, con un constriuctor me traigo los datos
+                
+                // Aqui instancio el objeto contacto, con un constructor me traigo los datos
 
                 Contacto nuevoContacto = new Contacto(nombre, apellido, telefono);
 
@@ -60,6 +64,7 @@ public class Agenda{
                 if (existeContacto(nuevoContacto)){
                 System.out.println("⚠ El contacto ya existe.");
                 }
+                    
                 else {
                     // dentro del parametro coloco el nuevo contacto
                     agenda.add(nuevoContacto);
