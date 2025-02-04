@@ -34,7 +34,16 @@ public class Contacto {
     public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Contacto contacto = (Contacto) obj;
+        return nombre.equalsIgnoreCase(contacto.nombre) && apellido.equalsIgnoreCase(contacto.apellido);
+    }
 
-
-
+    @Override
+    public String toString() {
+        return nombre + " " + apellido + " - " + telefono;
+    }
 }
