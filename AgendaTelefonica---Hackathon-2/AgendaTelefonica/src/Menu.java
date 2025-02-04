@@ -1,22 +1,28 @@
 import java.util.Scanner;
 
 public class Menu {
+    public static final String ROJO = "\033[0;31m";
+    public static final String VERDE = "\033[0;32m";
+    public static final String AZUL = "\033[0;34m";
+    public static final String RESET = "\033[0m"; // restablece el color
     public static void menu() {
         Scanner scanner = new Scanner(System.in);
         int opcion;
         Agenda agenda = new Agenda(10);
         do {
-            System.out.println("\n 📞 MENÚ AGENDA TELEFÓNICA");
-            System.out.println("1️⃣ Agregar Contacto");
-            System.out.println("2️⃣ Existe el contacto");
-            System.out.println("3️⃣ Mostrar Contactos");
-            System.out.println("4️⃣ Buscar Contacto");
-            System.out.println("5️⃣ Eliminar Contacto");
-            System.out.println("6️⃣ Modificar Teléfono");
-            System.out.println("7️⃣ Revisar si la Agenda está llena");
-            System.out.println("8️⃣ Verificar si tengo espacio en la Agenda");
-            System.out.println("9️⃣ Salir");
-
+            System.out.println(AZUL + "*********************************" + RESET);
+            System.out.println(AZUL + " ✏️ MENÚ AGENDA TELEFÓNICA" + RESET);
+            System.out.println(AZUL + "*********************************" + RESET);
+            System.out.println(VERDE + "1️⃣ Agregar Contacto" + RESET);
+            System.out.println(VERDE + "2️⃣ Existe el contacto" + RESET);
+            System.out.println(VERDE + "3️⃣ Mostrar Contactos" + RESET);
+            System.out.println(VERDE + "4️⃣ Buscar Contacto" + RESET);
+            System.out.println(VERDE + "5️⃣ Eliminar Contacto" + RESET);
+            System.out.println(VERDE + "6️⃣ Modificar Teléfono" + RESET);
+            System.out.println(VERDE + "7️⃣ Revisar si la Agenda está llena" + RESET);
+            System.out.println(VERDE + "8️⃣ Verificar si tengo espacio en la Agenda" + RESET);
+            System.out.println(ROJO + "9️⃣ Salir" + RESET);
+            System.out.println(AZUL + "*********************************" + RESET);
 
             System.out.print("👉 Por favor, ingrese la opción que desea");
             opcion = scanner.nextInt();
@@ -28,17 +34,68 @@ public class Menu {
                     String nombre = scanner.nextLine();
                     System.out.print("💡 Apellido: ");
                     String apellido = scanner.nextLine();
-                    System.out.print("📞 Teléfono: ");
+                    System.out.print("📞 Teléfono (+57) : ");
                     String telefono = scanner.nextLine();
 
                     agenda.anadirContacto(nombre,apellido,telefono);
                     break;
                 case 2:
-                    System.out.print("⁉ Nombre del contacto: ");
+                    System.out.print("⁉️ Nombre del contacto: ");
                     String verificacionNombre = scanner.nextLine();
+                    System.out.print("⁉️ Apellido del contacto: ");
+                    String verificacionApellido = scanner.nextLine();
 
+                    // Crear un nuevo contacto temporal con el nombre y apellido
+                    Contacto contactoParaVerificar = new Contacto(verificacionNombre, verificacionApellido, "");
+
+                    // Verificar si el contacto ya existe en la agenda
+                    boolean existe = agenda.existeContacto(contactoParaVerificar);
+
+                    // Mostrar si existe o no
+                    if (existe) {
+                        System.out.println("✅ El contacto existe en la agenda.");
+                    } else {
+                        System.out.println("❌ El contacto no existe en la agenda.");
+                    }
+                    break;
                 case 3:
                     agenda.listarContactos();
+                    break;
+                case 4:
+                    System.out.print("Nombre: ");
+                    nombre = scanner.nextLine();
+                    System.out.print("Apellido: ");
+                    apellido = scanner.nextLine();
+                    agenda.buscarContacto(nombre, apellido);
+                    break;
+                case 5:
+                    System.out.println("-----------------------------------");
+                    System.out.println("| SISTEMA ELIMINACIÓN DE CONTACTO |");
+                    System.out.println("-----------------------------------");
+                    System.out.println("🗑 Por favor ingresa el nombre del contacto a eliminar");
+                    String nombreAEliminar = scanner.nextLine();
+
+                    System.out.println("🗑 Por favor ingresa el apellido del contacto a eliminar");
+                    String apellidoAEliminar = scanner.nextLine();
+                    agenda.eliminarContacto(nombreAEliminar, apellidoAEliminar);
+
+                    break;
+
+                case 6:
+                    System.out.println("-----------------------------------");
+                    System.out.println("| SISTEMA MODIFICACIÓN DE CONTACTO |");
+                    System.out.println("-----------------------------------");
+                    System.out.println("⁉️ Por favor, ingresa el nombre del contacto");
+                    String nombreAModificar = scanner.nextLine();
+
+                    System.out.println("⁉️ Por favor, ingresa el apellido del contacto");
+                    String apellidoAModificar = scanner.nextLine();
+
+                    System.out.println("📞 Por favor, ingresa el nuevo número de teléfono");
+                    String numeroAModificar = scanner.nextLine();
+
+                    agenda.modificarContacto(nombreAModificar, apellidoAModificar, numeroAModificar);
+
                     break;
                 case 7:
                     agenda.agendaLlena();
@@ -50,6 +107,6 @@ public class Menu {
                     System.out.println("👋 ¡Hasta pronto!");
                     break;
             }
-        } while();
+        } while(opcion != 9);
     }
 }

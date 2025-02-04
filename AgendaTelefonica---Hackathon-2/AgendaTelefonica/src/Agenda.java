@@ -25,16 +25,17 @@ public class Agenda{
 
         return false;
     }
-    public boolean existeContacto(Contacto contactoAgenda){
+    public boolean existeContacto(Contacto contactoAgenda) {
         for (Contacto contacto : agenda) {
-            if (contacto.equals(contactoAgenda)) {
-                System.out.println(" El contacto, ya existe en la agenda 📔");
+            // Comparar solo nombre y apellido de los contactos
+            if (contacto.getNombre().equals(contactoAgenda.getNombre()) &&
+                    contacto.getApellido().equals(contactoAgenda.getApellido())) {
+                System.out.println("El contacto existe en la agenda.😊");
                 return true;
             }
         }
-        System.out.println(" El contacto, no existe en la agenda 📔");
+        System.out.println(" El contacto no existe en la agenda 😒");
         return false;
-
     }
 
     public void anadirContacto(String nombre, String apellido, String telefono){
@@ -45,6 +46,11 @@ public class Agenda{
                 System.out.println("❌ El nombre, apellido y telefono son obligatorios");
             } else {
 
+                //regex es de 0 a 9 los digitos que usa            }
+                if( telefono.length() != 10 ||  !telefono.matches("[0-9]+")) {
+                    System.out.println("🛑 El número de teléfono debe tener exactamente 10 caracteres.");
+                    return;
+                }
                 // Aqui instancio el objeto contacto, con un constriuctor me traigo los datos
 
                 Contacto nuevoContacto = new Contacto(nombre, apellido, telefono);
@@ -104,6 +110,12 @@ public class Agenda{
     public void modificarContacto(String nombre, String apellido, String nuevoTelefono) {
         for (Contacto c : agenda) {
             if (c.getNombre().equalsIgnoreCase(nombre) && c.getApellido().equalsIgnoreCase(apellido)) {
+
+                if (c.getTelefono().equals(nuevoTelefono)) {
+                    System.out.println("El nuevo número es el mismo que el actual, por favor, verifique.");
+                    return;
+                }
+
                 c.setTelefono(nuevoTelefono);
                 System.out.println("Teléfono modificado correctamente.");
                 return;
@@ -111,6 +123,7 @@ public class Agenda{
         }
         System.out.println("Contacto no encontrado.");
     }
+
 
     public void espaciosLibres(){
         //Brandon
