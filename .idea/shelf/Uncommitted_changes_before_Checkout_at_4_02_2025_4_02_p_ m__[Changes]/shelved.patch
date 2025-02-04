@@ -1,0 +1,298 @@
+Index: AgendaTelefonica/src/Menu.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.Scanner;\r\n\r\npublic class Menu {\r\n    public static void menu() {\r\n        Scanner scanner = new Scanner(System.in);\r\n        int opcion;\r\n        do {\r\n            System.out.println(\"\\n \uD83D\uDCDE MENÚ AGENDA TELEFÓNICA\");\r\n            System.out.println(\"1\uFE0F⃣ Agregar Contacto\");\r\n            System.out.println(\"2\uFE0F⃣ Existe el contacto\");\r\n            System.out.println(\"3\uFE0F⃣ Mostrar Contactos\");\r\n            System.out.println(\"4\uFE0F⃣ Buscar Contacto\");\r\n            System.out.println(\"5\uFE0F⃣ Eliminar Contacto\");\r\n            System.out.println(\"6\uFE0F⃣ Modificar Teléfono\");\r\n            System.out.println(\"7\uFE0F⃣ Revisar si la Agenda está llena\");\r\n            System.out.println(\"8\uFE0F⃣ Verificar si tengo espacio en la Agenda\");\r\n            System.out.println(\"9\uFE0F⃣ Salir\");\r\n\r\n\r\n            System.out.print(\"\uD83D\uDC49 Por favor, ingrese la opción que desea\");\r\n            opcion = scanner.nextInt();\r\n            scanner.nextLine(); // Limpiar\r\n\r\n\r\n            Agenda capacidad = new Agenda(10);\r\n\r\n            switch (opcion) {\r\n                case 1:\r\n                    System.out.print(\"\uD83D\uDCA1 Nombre: \");\r\n                    String nombre = scanner.nextLine();\r\n                    System.out.print(\"\uD83D\uDCA1 Apellido: \");\r\n                    String apellido = scanner.nextLine();\r\n                    System.out.print(\"\uD83D\uDCDE Teléfono: \");\r\n                    String telefono = scanner.nextLine();\r\n\r\n                    capacidad.anadirContacto(nombre,apellido,telefono);\r\n                    break;\r\n                case 2:\r\n                    System.out.print(\"⁉ Nombre del contacto: \");\r\n                    String verificacionNombre = scanner.nextLine();\r\n\r\n\r\n            }\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/AgendaTelefonica/src/Menu.java b/AgendaTelefonica/src/Menu.java
+--- a/AgendaTelefonica/src/Menu.java	(revision 93610dd3fc26ee704eedcecfbbcf25048c69efba)
++++ b/AgendaTelefonica/src/Menu.java	(date 1738702960171)
+@@ -1,46 +1,112 @@
+ import java.util.Scanner;
+ 
+ public class Menu {
++    public static final String ROJO = "\033[0;31m";
++    public static final String VERDE = "\033[0;32m";
++    public static final String AZUL = "\033[0;34m";
++    public static final String RESET = "\033[0m"; // restablece el color
+     public static void menu() {
+         Scanner scanner = new Scanner(System.in);
+         int opcion;
++        Agenda agenda = new Agenda(10);
+         do {
+-            System.out.println("\n 📞 MENÚ AGENDA TELEFÓNICA");
+-            System.out.println("1️⃣ Agregar Contacto");
+-            System.out.println("2️⃣ Existe el contacto");
+-            System.out.println("3️⃣ Mostrar Contactos");
+-            System.out.println("4️⃣ Buscar Contacto");
+-            System.out.println("5️⃣ Eliminar Contacto");
+-            System.out.println("6️⃣ Modificar Teléfono");
+-            System.out.println("7️⃣ Revisar si la Agenda está llena");
+-            System.out.println("8️⃣ Verificar si tengo espacio en la Agenda");
+-            System.out.println("9️⃣ Salir");
+-
++            System.out.println(AZUL + "*********************************" + RESET);
++            System.out.println(AZUL + " ✏️ MENÚ AGENDA TELEFÓNICA" + RESET);
++            System.out.println(AZUL + "*********************************" + RESET);
++            System.out.println(VERDE + "1️⃣ Agregar Contacto" + RESET);
++            System.out.println(VERDE + "2️⃣ Existe el contacto" + RESET);
++            System.out.println(VERDE + "3️⃣ Mostrar Contactos" + RESET);
++            System.out.println(VERDE + "4️⃣ Buscar Contacto" + RESET);
++            System.out.println(VERDE + "5️⃣ Eliminar Contacto" + RESET);
++            System.out.println(VERDE + "6️⃣ Modificar Teléfono" + RESET);
++            System.out.println(VERDE + "7️⃣ Revisar si la Agenda está llena" + RESET);
++            System.out.println(VERDE + "8️⃣ Verificar si tengo espacio en la Agenda" + RESET);
++            System.out.println(ROJO + "9️⃣ Salir" + RESET);
++            System.out.println(AZUL + "*********************************" + RESET);
+ 
+             System.out.print("👉 Por favor, ingrese la opción que desea");
+             opcion = scanner.nextInt();
+             scanner.nextLine(); // Limpiar
+ 
+-
+-            Agenda capacidad = new Agenda(10);
+-
+             switch (opcion) {
+                 case 1:
+                     System.out.print("💡 Nombre: ");
+                     String nombre = scanner.nextLine();
+                     System.out.print("💡 Apellido: ");
+                     String apellido = scanner.nextLine();
+-                    System.out.print("📞 Teléfono: ");
++                    System.out.print("📞 Teléfono (+57) : ");
+                     String telefono = scanner.nextLine();
+ 
+-                    capacidad.anadirContacto(nombre,apellido,telefono);
++                    agenda.anadirContacto(nombre,apellido,telefono);
+                     break;
+                 case 2:
+-                    System.out.print("⁉ Nombre del contacto: ");
++                    System.out.print("⁉️ Nombre del contacto: ");
+                     String verificacionNombre = scanner.nextLine();
++                    System.out.print("⁉️ Apellido del contacto: ");
++                    String verificacionApellido = scanner.nextLine();
++
++                    // Crear un nuevo contacto temporal con el nombre y apellido
++                    Contacto contactoParaVerificar = new Contacto(verificacionNombre, verificacionApellido, "");
+ 
++                    // Verificar si el contacto ya existe en la agenda
++                    boolean existe = agenda.existeContacto(contactoParaVerificar);
+ 
+-            }
+-        }
++                    // Mostrar si existe o no
++                    if (existe) {
++                        System.out.println("✅ El contacto existe en la agenda.");
++                    } else {
++                        System.out.println("❌ El contacto no existe en la agenda.");
++                    }
++                    break;
++                case 3:
++                    agenda.listarContactos();
++                    break;
++                case 4:
++                    System.out.print("Nombre: ");
++                    nombre = scanner.nextLine();
++                    System.out.print("Apellido: ");
++                    apellido = scanner.nextLine();
++                    agenda.buscarContacto(nombre, apellido);
++                    break;
++                case 5:
++                    System.out.println("-----------------------------------");
++                    System.out.println("| SISTEMA ELIMINACIÓN DE CONTACTO |");
++                    System.out.println("-----------------------------------");
++                    System.out.println("🗑 Por favor ingresa el nombre del contacto a eliminar");
++                    String nombreAEliminar = scanner.nextLine();
++
++                    System.out.println("🗑 Por favor ingresa el apellido del contacto a eliminar");
++                    String apellidoAEliminar = scanner.nextLine();
++                    agenda.eliminarContacto(nombreAEliminar, apellidoAEliminar);
++
++                    break;
++
++                case 6:
++                    System.out.println("-----------------------------------");
++                    System.out.println("| SISTEMA MODIFICACIÓN DE CONTACTO |");
++                    System.out.println("-----------------------------------");
++                    System.out.println("⁉️ Por favor, ingresa el nombre del contacto");
++                    String nombreAModificar = scanner.nextLine();
++
++                    System.out.println("⁉️ Por favor, ingresa el apellido del contacto");
++                    String apellidoAModificar = scanner.nextLine();
++
++                    System.out.println("📞 Por favor, ingresa el nuevo número de teléfono");
++                    String numeroAModificar = scanner.nextLine();
++
++                    agenda.modificarContacto(nombreAModificar, apellidoAModificar, numeroAModificar);
++
++                    break;
++                case 7:
++                    agenda.agendaLlena();
++                    break;
++                case 8:
++                    agenda.espaciosLibres();
++                    break;
++                case 9:
++                    System.out.println("👋 ¡Hasta pronto!");
++                    break;
++            }
++        } while(opcion != 9);
+     }
+-}
++}
+\ No newline at end of file
+Index: AgendaTelefonica/src/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class Main {\r\n    public static void main(String[] args) {\r\n        System.out.println(\"Hello, World!\");\r\n\r\n\r\n\r\n\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/AgendaTelefonica/src/Main.java b/AgendaTelefonica/src/Main.java
+--- a/AgendaTelefonica/src/Main.java	(revision 93610dd3fc26ee704eedcecfbbcf25048c69efba)
++++ b/AgendaTelefonica/src/Main.java	(date 1738702894021)
+@@ -1,9 +1,5 @@
+ public class Main {
+     public static void main(String[] args) {
+-        System.out.println("Hello, World!");
+-
+-
+-
+ 
+ 
+     }
+Index: AgendaTelefonica/src/Contacto.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class Contacto {\r\n\r\n    private String nombre, apellido, telefono;\r\n\r\n    public Contacto() {\r\n    }\r\n\r\n    public Contacto(String nombre, String apellido, String telefono) {\r\n        this.nombre = nombre;\r\n        this.apellido = apellido;\r\n        this.telefono = telefono;\r\n    }\r\n\r\n    public String getNombre() {\r\n        return nombre;\r\n    }\r\n\r\n    public void setNombre(String nombre) {\r\n        this.nombre = nombre;\r\n    }\r\n\r\n    public String getApellido() {\r\n        return apellido;\r\n    }\r\n\r\n    public void setApellido(String apellido) {\r\n        this.apellido = apellido;\r\n    }\r\n\r\n    public String getTelefono() {\r\n        return telefono;\r\n    }\r\n\r\n    public void setTelefono(String telefono) {\r\n        this.telefono = telefono;\r\n    }\r\n\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/AgendaTelefonica/src/Contacto.java b/AgendaTelefonica/src/Contacto.java
+--- a/AgendaTelefonica/src/Contacto.java	(revision 93610dd3fc26ee704eedcecfbbcf25048c69efba)
++++ b/AgendaTelefonica/src/Contacto.java	(date 1738702924162)
+@@ -34,7 +34,16 @@
+     public void setTelefono(String telefono) {
+         this.telefono = telefono;
+     }
+-
++    @Override
++    public boolean equals(Object obj) {
++        if (this == obj) return true;
++        if (obj == null || getClass() != obj.getClass()) return false;
++        Contacto contacto = (Contacto) obj;
++        return nombre.equalsIgnoreCase(contacto.nombre) && apellido.equalsIgnoreCase(contacto.apellido);
++    }
+ 
+-
+-}
++    @Override
++    public String toString() {
++        return nombre + " " + apellido + " - " + telefono;
++    }
++}
+\ No newline at end of file
+Index: AgendaTelefonica/src/Agenda.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.ArrayList;\r\nimport java.util.Collections;\r\nimport java.util.Comparator;\r\n\r\n\r\npublic class Agenda{\r\n    private ArrayList<Contacto> agenda;\r\n\r\n    private int capacidad;\r\n\r\n    public Agenda(int capacidad) {\r\n        this.capacidad = capacidad;\r\n        this.agenda = new ArrayList<Contacto>();\r\n    }\r\n    public boolean agendaLlena(){\r\n        if (agenda.size() >= capacidad) {\r\n            System.out.println(\"\\n\" + Lineas());\r\n            System.out.println(\"La agenda esta llena.\");\r\n            System.out.println(Lineas() + \"\\n\");\r\n        } else {\r\n            System.out.println(\"\\n\" + Lineas());\r\n            System.out.println(\"La agenda tiene espacio.\");\r\n            System.out.println(Lineas() + \"\\n\");\r\n        }\r\n\r\n        return false;\r\n    }\r\n    public boolean existeContacto(Contacto contactoAgenda){\r\n        for (Contacto contacto : agenda) {\r\n            if (contacto.equals(contactoAgenda)) {\r\n                return true;\r\n            }\r\n        }\r\n        return false;\r\n\r\n    }\r\n\r\n    public void anadirContacto(String nombre, String apellido, String telefono){\r\n        if (agendaLlena()){\r\n            System.out.println(\" ⚠ Lo sentimos la Agenda esta llena, por lo tanto no puedes añadir ❌ \");\r\n        } else {\r\n            if ( nombre.isEmpty() || apellido.isEmpty() || telefono.isEmpty()){\r\n                System.out.println(\"❌ El nombre, apellido y telefono son obligatorios\");\r\n            } else {\r\n\r\n                // Aqui instancio el objeto contacto, con un constriuctor me traigo los datos\r\n\r\n                Contacto nuevoContacto = new Contacto(nombre, apellido, telefono);\r\n\r\n                // Verificar que haya nombre apellido y telefono\r\n\r\n                if (existeContacto(nuevoContacto)){\r\n                System.out.println(\"⚠ El contacto ya existe.\");\r\n                }\r\n                else {\r\n                    // dentro del parametro coloco el nuevo contacto\r\n                    agenda.add(nuevoContacto);\r\n                    System.out.println(\"✅ El contacto se ha añadido con exito \uD83D\uDE01 \");\r\n                }\r\n            }\r\n        }\r\n    }\r\n\r\n// Método para listar todos los contactos\r\n\r\n    public void listarContactos() {\r\n        if (agenda.isEmpty()) {\r\n            System.out.println(\"La agenda está vacía.\");\r\n        } else {\r\n            // Ordenar la lista por nombre y apellido\r\n            Collections.sort(agenda, Comparator.comparing(Contacto::getNombre).thenComparing(Contacto::getApellido));\r\n            for (Contacto c : agenda) {\r\n                System.out.println(c);\r\n            }\r\n        }\r\n    }\r\n\r\n    // Método para buscar un contacto por nombre y apellido\r\n    public void buscarContacto(String nombre, String apellido) {\r\n        Contacto temp = new Contacto(nombre, apellido, \"\");\r\n        if (agenda.contains(temp)) {\r\n            for (Contacto c : agenda) {\r\n                if (c.equals(temp)) {\r\n                    System.out.println(\"Teléfono: \" + c.getTelefono());\r\n                    return;\r\n                }\r\n            }\r\n        }\r\n        System.out.println(\"Contacto no encontrado.\");\r\n    }\r\n    public void eliminarContacto(){\r\n        //Amalia\r\n    }\r\n    public void modificarContacto(){\r\n        //Amalia\r\n    }\r\n\r\n    public void espaciosLibres(){\r\n        //Brandon\r\n        int espaciosLibres = capacidad - agenda.size();\r\n        System.out.println(\"\\n\" + Lineas());\r\n        System.out.println(\"Espacios libres en la agenda: \" + espaciosLibres);\r\n        System.out.println(Lineas() + \"\\n\");\r\n    }\r\n\r\n    String Lineas() {\r\n        return \"========================================\";\r\n    }\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/AgendaTelefonica/src/Agenda.java b/AgendaTelefonica/src/Agenda.java
+--- a/AgendaTelefonica/src/Agenda.java	(revision 93610dd3fc26ee704eedcecfbbcf25048c69efba)
++++ b/AgendaTelefonica/src/Agenda.java	(date 1738702936991)
+@@ -1,3 +1,4 @@
++
+ import java.util.ArrayList;
+ import java.util.Collections;
+ import java.util.Comparator;
+@@ -25,14 +26,17 @@
+ 
+         return false;
+     }
+-    public boolean existeContacto(Contacto contactoAgenda){
++    public boolean existeContacto(Contacto contactoAgenda) {
+         for (Contacto contacto : agenda) {
+-            if (contacto.equals(contactoAgenda)) {
++            // Comparar solo nombre y apellido de los contactos
++            if (contacto.getNombre().equals(contactoAgenda.getNombre()) &&
++                    contacto.getApellido().equals(contactoAgenda.getApellido())) {
++                System.out.println("El contacto existe en la agenda.😊");
+                 return true;
+             }
+         }
++        System.out.println(" El contacto no existe en la agenda 😒");
+         return false;
+-
+     }
+ 
+     public void anadirContacto(String nombre, String apellido, String telefono){
+@@ -43,6 +47,11 @@
+                 System.out.println("❌ El nombre, apellido y telefono son obligatorios");
+             } else {
+ 
++                //regex es de 0 a 9 los digitos que usa            }
++                if( telefono.length() != 10 ||  !telefono.matches("[0-9]+")) {
++                    System.out.println("🛑 El número de teléfono debe tener exactamente 10 caracteres.");
++                    return;
++                }
+                 // Aqui instancio el objeto contacto, con un constriuctor me traigo los datos
+ 
+                 Contacto nuevoContacto = new Contacto(nombre, apellido, telefono);
+@@ -50,7 +59,7 @@
+                 // Verificar que haya nombre apellido y telefono
+ 
+                 if (existeContacto(nuevoContacto)){
+-                System.out.println("⚠ El contacto ya existe.");
++                    System.out.println("⚠ El contacto ya existe.");
+                 }
+                 else {
+                     // dentro del parametro coloco el nuevo contacto
+@@ -88,12 +97,34 @@
+         }
+         System.out.println("Contacto no encontrado.");
+     }
+-    public void eliminarContacto(){
+-        //Amalia
++    public void eliminarContacto(String nombre, String apellido) {
++        for (Contacto c : agenda) {
++            if (c.getNombre().equalsIgnoreCase(nombre) && c.getApellido().equalsIgnoreCase(apellido)) {
++                agenda.remove(c);
++                System.out.println("Contacto eliminado correctamente.");
++                return;
++            }
++        }
++        System.out.println("El contacto no existe.");
+     }
+-    public void modificarContacto(){
+-        //Amalia
++
++    public void modificarContacto(String nombre, String apellido, String nuevoTelefono) {
++        for (Contacto c : agenda) {
++            if (c.getNombre().equalsIgnoreCase(nombre) && c.getApellido().equalsIgnoreCase(apellido)) {
++
++                if (c.getTelefono().equals(nuevoTelefono)) {
++                    System.out.println("El nuevo número es el mismo que el actual, por favor, verifique.");
++                    return;
++                }
++
++                c.setTelefono(nuevoTelefono);
++                System.out.println("Teléfono modificado correctamente.");
++                return;
++            }
++        }
++        System.out.println("Contacto no encontrado.");
+     }
++
+ 
+     public void espaciosLibres(){
+         //Brandon
+@@ -108,4 +139,4 @@
+     }
+ 
+ 
+-}
+\ No newline at end of file
++}
