@@ -5,8 +5,9 @@ public class Menu {
     //Secuencias de escape ANSI: Se usan para aplicar colores y estilos al texto en la consola
 
     public static final String ROJO = "\033[0;31m";
-    public static final String VERDE = "\033[0;32m"; //El código 32 en ANSI es para el color verde
+    public static final String MAGENTA = "\033[0;35m"; //El código 32 en ANSI es para el color verde
     public static final String AZUL = "\033[0;34m";
+    public static final String VERDE = "\033[0;92m";
     public static final String RESET = "\033[0m"; // restablece el color
 
     public static void menu() {
@@ -18,14 +19,14 @@ public class Menu {
             System.out.println(AZUL + "*********************************" + RESET);
             System.out.println(AZUL + " ✏️ MENÚ AGENDA TELEFÓNICA" + RESET);
             System.out.println(AZUL + "*********************************" + RESET);
-            System.out.println(VERDE + "1️⃣ Agregar Contacto" + RESET);
-            System.out.println(VERDE + "2️⃣ Existe el contacto" + RESET);
-            System.out.println(VERDE + "3️⃣ Mostrar Contactos" + RESET);
-            System.out.println(VERDE + "4️⃣ Buscar Contacto" + RESET);
-            System.out.println(VERDE + "5️⃣ Eliminar Contacto" + RESET);
-            System.out.println(VERDE + "6️⃣ Modificar Teléfono" + RESET);
-            System.out.println(VERDE + "7️⃣ Revisar si la Agenda está llena" + RESET);
-            System.out.println(VERDE + "8️⃣ Verificar si tengo espacio en la Agenda" + RESET);
+            System.out.println(MAGENTA + "1️⃣ Agregar Contacto" + RESET);
+            System.out.println(MAGENTA + "2️⃣ Existe el contacto" + RESET);
+            System.out.println(MAGENTA + "3️⃣ Mostrar Contactos" + RESET);
+            System.out.println(MAGENTA + "4️⃣ Buscar Contacto" + RESET);
+            System.out.println(MAGENTA + "5️⃣ Eliminar Contacto" + RESET);
+            System.out.println(MAGENTA + "6️⃣ Modificar Teléfono" + RESET);
+            System.out.println(MAGENTA + "7️⃣ Revisar si la Agenda está llena" + RESET);
+            System.out.println(MAGENTA + "8️⃣ Verificar si tengo espacio en la Agenda" + RESET);
             System.out.println(ROJO + "9️⃣ Salir" + RESET);
             System.out.println(AZUL + "*********************************" + RESET);
 
@@ -36,6 +37,10 @@ public class Menu {
 
                 switch (opcion) {
                     case 1:
+                        System.out.println(VERDE + "-----------------------------------" + RESET);
+                        System.out.println(VERDE + "| SISTEMA AGREGAR CONTACTO |" + RESET);
+                        System.out.println(VERDE + "-----------------------------------" + RESET);
+
                         System.out.print("💡 Nombre: ");
                         String nombre = scanner.nextLine();
                         System.out.print("💡 Apellido: ");
@@ -46,6 +51,9 @@ public class Menu {
                         agenda.anadirContacto(nombre, apellido, telefono);
                         break;
                     case 2:
+                        System.out.println(VERDE + "-----------------------------------" + RESET);
+                        System.out.println(VERDE + "| SISTEMA EXISTE DE CONTACTO |" + RESET);
+                        System.out.println(VERDE + "-----------------------------------" + RESET);
                         System.out.print("⁉️ Nombre del contacto: ");
                         String verificacionNombre = scanner.nextLine();
                         System.out.print("⁉️ Apellido del contacto: ");
@@ -65,9 +73,15 @@ public class Menu {
                         }
                         break;
                     case 3:
+                        System.out.println(VERDE + "-----------------------------------" + RESET);
+                        System.out.println(VERDE + "| SISTEMA MOSTRAR DE CONTACTO |" + RESET);
+                        System.out.println(VERDE + "-----------------------------------" + RESET);
                         agenda.listarContactos();
                         break;
                     case 4:
+                        System.out.println(VERDE + "-----------------------------------" + RESET);
+                        System.out.println(VERDE + "| SISTEMA BUSCAR DE CONTACTO |" + RESET);
+                        System.out.println(VERDE + "-----------------------------------" + RESET);
                         System.out.print("Nombre: ");
                         nombre = scanner.nextLine();
                         System.out.print("Apellido: ");
@@ -75,9 +89,9 @@ public class Menu {
                         agenda.buscarContacto(nombre, apellido);
                         break;
                     case 5:
-                        System.out.println("-----------------------------------");
-                        System.out.println("| SISTEMA ELIMINACIÓN DE CONTACTO |");
-                        System.out.println("-----------------------------------");
+                        System.out.println(VERDE + "-----------------------------------" + RESET);
+                        System.out.println(VERDE + "| SISTEMA ELIMINACIÓN DE CONTACTO |" + RESET);
+                        System.out.println(VERDE + "-----------------------------------" + RESET);
                         System.out.println("🗑 Por favor ingresa el nombre del contacto a eliminar");
                         String nombreAEliminar = scanner.nextLine();
 
@@ -102,12 +116,21 @@ public class Menu {
                         agenda.modificarContacto(nombreAModificar, apellidoAModificar, numeroAModificar);
                         break;
                     case 7:
+                        System.out.println("-----------------------------------");
+                        System.out.println("| SISTEMA REVISAR SI ESTA LLENA LA AGENDA |");
+                        System.out.println("-----------------------------------");
                         agenda.agendaLlena();
                         break;
                     case 8:
+                        System.out.println("-----------------------------------");
+                        System.out.println("| SISTEMA TENGO ESPACIO EN LA AGENDA? |");
+                        System.out.println("-----------------------------------");
                         agenda.espaciosLibres();
                         break;
                     case 9:
+                        System.out.println("-----------------------------------");
+                        System.out.println("| SALIR DEL SISTEMA |");
+                        System.out.println("-----------------------------------");
                         System.out.println("👋 ¡Hasta pronto!");
                         break;
                     default:
