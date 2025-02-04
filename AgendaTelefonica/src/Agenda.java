@@ -102,7 +102,10 @@ public class Agenda{
         System.out.println("Contacto no encontrado.");
     }
     public void eliminarContacto(String nombre, String apellido) {
+        
+        // Se utiliza un ciclo for each para recorrer el arreglo agenda con una variable c tipo Contacto
         for (Contacto c : agenda) {
+             // Se usa para verificar si el nombre y el apellido con iguales evitando la diferencia entre mayusculas y minusculas
             if (c.getNombre().equalsIgnoreCase(nombre) && c.getApellido().equalsIgnoreCase(apellido)) {
                 agenda.remove(c);
                 System.out.println("Contacto eliminado correctamente.");
@@ -113,14 +116,16 @@ public class Agenda{
     }
 
     public void modificarContacto(String nombre, String apellido, String nuevoTelefono) {
+        // Se recorre el arreglo con un forEach 
         for (Contacto c : agenda) {
+            // Se busca el contacto que coincida con nomnre y apellido
             if (c.getNombre().equalsIgnoreCase(nombre) && c.getApellido().equalsIgnoreCase(apellido)) {
-
+                // También se verifica que el contacto no sea el mismo que el que ya tiene registado
                 if (c.getTelefono().equals(nuevoTelefono)) {
                     System.out.println("El nuevo número es el mismo que el actual, por favor, verifique.");
                     return;
                 }
-
+                //Se usa setTelefono para mandar el nuevo telefono
                 c.setTelefono(nuevoTelefono);
                 System.out.println("Teléfono modificado correctamente.");
                 return;
