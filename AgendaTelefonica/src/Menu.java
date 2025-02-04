@@ -63,10 +63,10 @@ public class Menu {
                     System.out.println("Por favor ingresa el nombre del contacto a modificar");
                     String nombreAModificar = scanner.nextLine();
 
-                    System.out.println("Por favor ingresa el apellido del contacto a eliminar");
+                    System.out.println("Por favor ingresa el apellido del contacto a modificarr");
                     String apellidoAModificar = scanner.nextLine();
 
-                    System.out.println("Por favor ingresa el numero del contacto a eliminar");
+                    System.out.println("Por favor ingresa el numero del contacto a modificar");
                     String numeroAModificar = scanner.nextLine();
 
                     Agenda agenda2 = new Agenda();
