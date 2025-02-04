@@ -28,9 +28,11 @@ public class Agenda{
     public boolean existeContacto(Contacto contactoAgenda){
         for (Contacto contacto : agenda) {
             if (contacto.equals(contactoAgenda)) {
+                System.out.println(" El contacto, ya existe en la agenda 📔");
                 return true;
             }
         }
+        System.out.println(" El contacto, no existe en la agenda 📔");
         return false;
 
     }

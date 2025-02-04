@@ -4,6 +4,7 @@ public class Menu {
     public static void menu() {
         Scanner scanner = new Scanner(System.in);
         int opcion;
+        Agenda capacidad = new Agenda(10);
         do {
             System.out.println("\n 📞 MENÚ AGENDA TELEFÓNICA");
             System.out.println("1️⃣ Agregar Contacto");
@@ -20,9 +21,6 @@ public class Menu {
             System.out.print("👉 Por favor, ingrese la opción que desea");
             opcion = scanner.nextInt();
             scanner.nextLine(); // Limpiar
-
-
-            Agenda capacidad = new Agenda(10);
 
             switch (opcion) {
                 case 1:
@@ -41,6 +39,6 @@ public class Menu {
 
 
             }
-        }
+        } while
     }
 }
