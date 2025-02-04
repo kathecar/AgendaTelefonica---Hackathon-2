@@ -1,28 +1,35 @@
 import java.util.ArrayList;
 
-public class Agenda extends Contacto{
+public class Agenda {
 
-    ArrayList<Contacto> agenda = new ArrayList<>();
+    private ArrayList<Contacto> agenda;
+
+    public Agenda() {
+        this.agenda = new ArrayList<>();
 
 
-
-    public Agenda(String nombre, String apellido, String telefono, ArrayList<Contacto> agenda) {
-        super(nombre, apellido, telefono);
-        this.agenda = agenda;
     }
 
-   // agenda.add=("ana");
 
-   public void anadirContacto(){
-    // Kate
 
-   }
-    public void existeContacto(){
-    // Kate
+
+
+    public void anadirContacto(){
+        // Kate
+
+    }
+    public boolean existeContacto(Contacto contactoAgenda){
+        // Kate
+        for (Contacto contacto : agenda) {
+            if (contacto.equals(contactoAgenda)) {
+                return true;
+            }
+        }
+        return false;
 
     }
     public void listarContacto(){
-    //Juan
+        //Juan
     }
     public void buscarContacto(){
         //Juan
@@ -38,6 +45,6 @@ public class Agenda extends Contacto{
 
     }
     public void espaciosLibres(){
-    //Brandon
+        //Brandon
     }
 }
