@@ -1,0 +1,78 @@
+Index: AgendaTelefonica/src/Menu.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import java.util.Scanner;\r\n\r\npublic class Menu {\r\n    public static void menu() {\r\n        Scanner scanner = new Scanner(System.in);\r\n        int opcion;\r\n        do {\r\n            System.out.println(\"\\n \uD83D\uDCDE MENÚ AGENDA TELEFÓNICA\");\r\n            System.out.println(\"1\uFE0F⃣ Agregar Contacto\");\r\n            System.out.println(\"2\uFE0F⃣ Existe el contacto\");\r\n            System.out.println(\"3\uFE0F⃣ Mostrar Contactos\");\r\n            System.out.println(\"4\uFE0F⃣ Buscar Contacto\");\r\n            System.out.println(\"5\uFE0F⃣ Eliminar Contacto\");\r\n            System.out.println(\"6\uFE0F⃣ Modificar Teléfono\");\r\n            System.out.println(\"7\uFE0F⃣ Revisar si la Agenda está llena\");\r\n            System.out.println(\"8\uFE0F⃣ Verificar si tengo espacio en la Agenda\");\r\n            System.out.println(\"9\uFE0F⃣ Salir\");\r\n\r\n\r\n            System.out.print(\"\uD83D\uDC49 Por favor, ingrese la opción que desea\");\r\n            opcion = scanner.nextInt();\r\n            scanner.nextLine(); // Limpiar\r\n\r\n\r\n            Agenda capacidad = new Agenda(10);\r\n\r\n            switch (opcion) {\r\n                case 1:\r\n                    System.out.print(\"\uD83D\uDCA1 Nombre: \");\r\n                    String nombre = scanner.nextLine();\r\n                    System.out.print(\"\uD83D\uDCA1 Apellido: \");\r\n                    String apellido = scanner.nextLine();\r\n                    System.out.print(\"\uD83D\uDCDE Teléfono: \");\r\n                    String telefono = scanner.nextLine();\r\n\r\n                    capacidad.anadirContacto(nombre,apellido,telefono);\r\n                    break;\r\n                case 2:\r\n                    System.out.print(\"⁉ Nombre del contacto: \");\r\n                    String verificacionNombre = scanner.nextLine();\r\n\r\n\r\n            }\r\n        }\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/AgendaTelefonica/src/Menu.java b/AgendaTelefonica/src/Menu.java
+--- a/AgendaTelefonica/src/Menu.java	(revision 93610dd3fc26ee704eedcecfbbcf25048c69efba)
++++ b/AgendaTelefonica/src/Menu.java	(date 1738698316614)
+@@ -1,46 +1,5 @@
+-import java.util.Scanner;
+-
+ public class Menu {
+-    public static void menu() {
+-        Scanner scanner = new Scanner(System.in);
+-        int opcion;
+-        do {
+-            System.out.println("\n 📞 MENÚ AGENDA TELEFÓNICA");
+-            System.out.println("1️⃣ Agregar Contacto");
+-            System.out.println("2️⃣ Existe el contacto");
+-            System.out.println("3️⃣ Mostrar Contactos");
+-            System.out.println("4️⃣ Buscar Contacto");
+-            System.out.println("5️⃣ Eliminar Contacto");
+-            System.out.println("6️⃣ Modificar Teléfono");
+-            System.out.println("7️⃣ Revisar si la Agenda está llena");
+-            System.out.println("8️⃣ Verificar si tengo espacio en la Agenda");
+-            System.out.println("9️⃣ Salir");
+-
+ 
+-            System.out.print("👉 Por favor, ingrese la opción que desea");
+-            opcion = scanner.nextInt();
+-            scanner.nextLine(); // Limpiar
+ 
+ 
+-            Agenda capacidad = new Agenda(10);
+-
+-            switch (opcion) {
+-                case 1:
+-                    System.out.print("💡 Nombre: ");
+-                    String nombre = scanner.nextLine();
+-                    System.out.print("💡 Apellido: ");
+-                    String apellido = scanner.nextLine();
+-                    System.out.print("📞 Teléfono: ");
+-                    String telefono = scanner.nextLine();
+-
+-                    capacidad.anadirContacto(nombre,apellido,telefono);
+-                    break;
+-                case 2:
+-                    System.out.print("⁉ Nombre del contacto: ");
+-                    String verificacionNombre = scanner.nextLine();
+-
+-
+-            }
+-        }
+-    }
+ }
+Index: AgendaTelefonica/src/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>public class Main {\r\n    public static void main(String[] args) {\r\n        System.out.println(\"Hello, World!\");\r\n\r\n\r\n\r\n\r\n\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/AgendaTelefonica/src/Main.java b/AgendaTelefonica/src/Main.java
+--- a/AgendaTelefonica/src/Main.java	(revision 93610dd3fc26ee704eedcecfbbcf25048c69efba)
++++ b/AgendaTelefonica/src/Main.java	(date 1738698316675)
+@@ -2,9 +2,5 @@
+     public static void main(String[] args) {
+         System.out.println("Hello, World!");
+ 
+-
+-
+-
+-
+     }
+ }
+\ No newline at end of file
