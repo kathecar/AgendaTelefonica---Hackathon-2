@@ -30,13 +30,15 @@ public class Menu {
 
             switch (opcion) {
                 case 1:
+                    // Le pedimos al usuario agregar la información
                     System.out.print("💡 Nombre: ");
                     String nombre = scanner.nextLine();
                     System.out.print("💡 Apellido: ");
                     String apellido = scanner.nextLine();
                     System.out.print("📞 Teléfono (+57) : ");
                     String telefono = scanner.nextLine();
-
+                    
+                    //Llamamos al metodo anadirContacto para que me reaice esa acción
                     agenda.anadirContacto(nombre,apellido,telefono);
                     break;
                 case 2:
