@@ -11,11 +11,11 @@ public class Contacto {
         this.telefono = telefono;
     }
 
-    public String getNonbre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void setNonbre(String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
