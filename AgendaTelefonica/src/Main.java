@@ -3,7 +3,5 @@ public class Main {
         System.out.println("¡Hola,Hola!");
         Menu.menu();
 
-
-
     }
 }
