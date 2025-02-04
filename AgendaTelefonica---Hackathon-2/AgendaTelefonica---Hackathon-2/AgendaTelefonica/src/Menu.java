@@ -4,7 +4,7 @@ public class Menu {
     public static void menu() {
         Scanner scanner = new Scanner(System.in);
         int opcion;
-        Agenda agenda = new Agenda(10);
+        Agenda capacidad = new Agenda(10);
         do {
             System.out.println("\n 📞 MENÚ AGENDA TELEFÓNICA");
             System.out.println("1️⃣ Agregar Contacto");
@@ -31,25 +31,14 @@ public class Menu {
                     System.out.print("📞 Teléfono: ");
                     String telefono = scanner.nextLine();
 
-                    agenda.anadirContacto(nombre,apellido,telefono);
+                    capacidad.anadirContacto(nombre,apellido,telefono);
                     break;
                 case 2:
                     System.out.print("⁉ Nombre del contacto: ");
                     String verificacionNombre = scanner.nextLine();
 
-                case 3:
-                    agenda.listarContactos();
-                    break;
-                case 7:
-                    agenda.agendaLlena();
-                    break;
-                case 8:
-                    agenda.espaciosLibres();
-                    break;
-                case 9:
-                    System.out.println("👋 ¡Hasta pronto!");
-                    break;
+
             }
-        } while();
+        } while
     }
 }
